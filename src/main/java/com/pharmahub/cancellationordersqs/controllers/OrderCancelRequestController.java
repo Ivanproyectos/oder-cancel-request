@@ -9,6 +9,7 @@ import com.pharmahub.cancellationordersqs.entities.OderCancelRequest;
 import com.pharmahub.cancellationordersqs.services.ExportOderCancelRequestService;
 import com.pharmahub.cancellationordersqs.services.OderCancelRequestService;
 import jakarta.annotation.Resource;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
@@ -44,13 +45,14 @@ public class OrderCancelRequestController {
     }
     @PostMapping()
     public OderCancelRequest createOderCancelRequest(
-            @RequestBody CreateOderCancelRequest request
+           @Valid @RequestBody CreateOderCancelRequest request
     ) {
-        return oderCancelRequestService.createOderCancelRequest(request);
+        /*return oderCancelRequestService.createOderCancelRequest(request);*/
+        return null;
     }
     @GetMapping("export")
-    public ResponseEntity<ByteArrayResource> exportOderCancelRequest() throws IOException {
-        var byteArrayResource = exportOderCancelRequestService.exportOderCancelRequest();
+    public ResponseEntity<ByteArrayResource> exportOderCancelRequest(@ModelAttribute OrderCancelFilterRequest request) throws IOException {
+        var byteArrayResource = exportOderCancelRequestService.exportOderCancelRequest(request);
 
         return ResponseEntity.ok()
                 .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=producto_relleno.xlsx")

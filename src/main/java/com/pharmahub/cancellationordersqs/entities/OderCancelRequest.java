@@ -2,7 +2,9 @@ package com.pharmahub.cancellationordersqs.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.apache.poi.hpsf.Decimal;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 @Entity
@@ -48,6 +50,27 @@ public class OderCancelRequest {
 
     @Column(name = "dmodified_by_date")
     private Date modifiedDate;
+
+    @Column(name = "ntranfer_number", nullable = true)
+    private Long transferNumber;
+
+    @Column(name = "nunits", nullable = false)
+    private Integer units;
+
+    @Column(name = "nsku_quantity", nullable = false)
+    private Integer skuQuantity;
+
+    @Column(name = "norder_amount", nullable = false,precision = 14, scale = 2)
+    private BigDecimal  orderAmount;
+
+    @Column(name = "norder_type", nullable = false)
+    private String orderType;
+
+    @Column(name = "ngeneral_status_cancel_qs_id", nullable = false, length = 100)
+    private Integer generalStatusCancelId;
+
+    @Column(name = "smotive_no_cancel", nullable = false, length = 250)
+    private String motiveNoCancel;
 
     @ManyToOne
     @JoinColumn(name = "nrequeststatus")
