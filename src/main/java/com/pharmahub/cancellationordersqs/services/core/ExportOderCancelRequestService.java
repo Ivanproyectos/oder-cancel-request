@@ -1,4 +1,4 @@
-package com.pharmahub.cancellationordersqs.services;
+package com.pharmahub.cancellationordersqs.services.core;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;

@@ -1,4 +1,4 @@
-package com.pharmahub.cancellationordersqs.services;
+package com.pharmahub.cancellationordersqs.services.core;
 
 import com.pharmahub.cancellationordersqs.contracts.dtos.OderCancelRequestDto;
 import com.pharmahub.cancellationordersqs.contracts.dtos.PagedResultDto;
